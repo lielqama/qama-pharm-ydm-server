@@ -1,0 +1,59 @@
+﻿
+<div class="row  text-center">
+    <br />
+    <br />
+    <h2>לוגים</h2>
+    <br />
+    <div class="col-md-12 ">
+        <form id="filter">
+            <ul class="list-inline">
+                <li>מתאריך:</li>
+                <li>
+                    <input id="start" name="start" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                </li>
+                <li>עד לתאריך:</li>
+                <li>
+                    <input id="end" name="end" class="form-control" type="date" value="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")" />
+                </li>
+                <li>הצליח?:</li>
+                <li>
+                    <select id="success" name="success" class="form-control">
+                        <option value="null">הכול</option>
+                        <option value="true">הצליח</option>
+                        <option value="false">נכשל</option>
+                    </select>
+                </li>
+                <li><input type="submit" value="הצג" class="btn btn-info" /> </li>
+            </ul>
+        </form>
+    </div>
+
+    <div id="content" class="col-md-12" style="margin-top:30px">
+
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        loadData();
+        $('#filter').submit(function (e) {
+
+            e.stopPropagation();
+            e.preventDefault();
+
+            loadData();
+        })
+
+
+        function loadData() {
+            let form = $('#filter');
+            let data = form.serializeArray();
+            let params = $.param(data);
+
+            let url = '@Url.Action("_GetLog","Home")' + '?' + params;
+
+            $('#content').load(url);
+        }
+
+    </script>
+}

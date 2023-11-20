@@ -1,0 +1,26 @@
+﻿@model List<Tuple<string,string>>
+
+@{
+    ViewBag.Title = "BarHotfix";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BarHotfix</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>מזהה פריוריטי</th>
+            <th>קוד / שגיאה בר</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Item1</td>
+                <td>@item.Item2</td>
+            </tr>
+        }
+    </tbody>
+</table>

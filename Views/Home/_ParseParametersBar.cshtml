@@ -1,0 +1,30 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "_ParseParameters";
+    Layout = null;
+
+}
+<style>
+    #paramT div,#paramT th,#paramT td{
+        direction : rtl;
+        text-align:right;
+    }
+</style>
+
+<table id="paramT" class="table small" style="text-align:right" dir="rtl">
+    <tr class=" alert-info">
+        <th>פרמטר</th>
+        <th>ערך</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var split = item.Split('=').ToList();
+        <tr>
+            <td>@split[0] </td>
+            <td>@split[1]</td>
+        </tr>
+    }
+
+</table>
+

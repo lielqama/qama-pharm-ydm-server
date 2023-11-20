@@ -1,0 +1,107 @@
+﻿@model IEnumerable<PharmYdm.Models.PharmYdm_Log>
+
+@if (Model.Count() > 0)
+{
+    <table class="table text-center">
+        <tr class="alert-info">
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriorityID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HfdID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stiker)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Success)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Error)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Parameters)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td style="min-width:150px">
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriorityID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HfdID)
+        </td>
+        <td>
+            @if (!string.IsNullOrEmpty(item.Stiker))
+            {
+                <a href="@item.Stiker" target="_blank">פתח</a>
+            }
+            else
+            {
+                <span>---</span>
+            }
+        </td>
+
+        <td>
+            @(item.Success ? "כן" : "לא")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Error)
+        </td>
+        <td>
+            <button type="button" class="btn btn-info btn-xs" onclick="setModel('@item.Parameters')" data-toggle="modal" data-target="#myModal">הצג</button>
+        </td>
+    </tr>
+        }
+
+    </table>
+
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3>אין קריאות מתועדות לטווח הזמן הנבחר</h3>
+        </div>
+    </div>
+}
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">נתוני משלוח</h4>
+            </div>
+            <div id="modalBody" class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">סגור</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        function setModel(p) {
+
+            let url = '@Url.Action("_ParseParameters","Home")' + '?p=' + p;
+            $.post(url, { p }, function (res) { $('#modalBody').html(res) });
+        }
+    </script>
+}

@@ -1,0 +1,36 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "_ParseParameters";
+    Layout = null;
+
+}
+<style>
+    #paramT div,#paramT th,#paramT td{
+        direction : rtl;
+        text-align:right;
+    }
+</style>
+<div class="row">
+    <div class="col-12 text-center">
+        <h3>כתובת מלאה:</h3>
+        <h4>@ViewBag.FullUrl</h4>
+    </div>
+</div>
+<table id="paramT" class="table small" style="text-align:right" dir="rtl">
+    <tr class=" alert-info">
+        <th>פרמטר</th>
+        <th>ערך</th>
+            <th>פרמטר</th>
+        <th>ערך</th>
+    </tr>
+    @for (int i = 1; i < 20; i++)
+    {
+        <tr>
+            <td>P@(i)</td>
+            <td>@Model[i - 1]</td>
+            <td>P@(i + 20)</td>
+            <td>@Model[i + 19]</td>
+        </tr>
+    }
+</table>
+

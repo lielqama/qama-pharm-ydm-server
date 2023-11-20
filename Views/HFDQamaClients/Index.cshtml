@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PharmYdm.Models.PharmYdmQamaClient>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustName)
+        </th>
+        <th style="max-width:300px">
+            @Html.DisplayNameFor(model => model.ApiKey)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustName)
+        </td>
+        <td style="max-width:300px;word-break:break-all">
+            @item.ApiKey
+        </td>
+        <td>
+            @Html.ActionLink("ערוך", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("מחק", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,27 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: 'Rubik', sans-serif;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.navbar-inverse {
+    background-color: #1a2f5a;
+    border-color: #080808;
+    color: white;
+}

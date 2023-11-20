@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "RecoverStikeData";
+}
+
+<style>
+    div{
+        direction: rtl;
+        text-align: right;
+    }
+</style>
+<h2>תוצאות שחזור</h2>
+
+@if (ViewBag.Error != null)
+{
+    <diav class="alert-danger">
+        @ViewBag.Error
+    </diav>
+}
+
+<h3>@Model.OkItems</h3>
+<h3>@Model.ErrorItems</h3>
+
+<br />
+@foreach (var item in Model.Errors)
+{
+    <h4>@item</h4>
+}
