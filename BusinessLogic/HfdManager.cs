@@ -45,7 +45,7 @@ namespace PharmYdm.BusinessLogic
                              $"-A{model["CDES"]},-A,-A{model["QAMT_STATE"]},-A,-A{model["QAMT_SHIPSTREET"]}," +
                              $"-A{model["QAMT_SHIPNUMHOUSE"]},-A,-A,-A,-A{model["QAMT_PHONE"]}," +
                              $"-A,-A{model["DOCNO"]},-A{model["QAMT_PACKNUMBER"]},-A,-A," +
-                             $"-A{model["ORDNAME"]},-A{model["QAMT_PLACINGDATE"]},-A,-N,-N," +
+                             $"-A{model["ORDNAME"]},-A,-A,-N,-N," +
                              $"-N,-A,-A,-N,-N," +
                              $"-A{"XML"},-A,-A,-N";
 

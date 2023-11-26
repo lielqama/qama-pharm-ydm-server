@@ -43,20 +43,20 @@ namespace PharmYdm.Controllers
                     var createShip = await this.hfd.CreateShip(shipParameters);
                 var stikerUrl = this.hfd.GetShipStickerUrl(createShip);
 
-                var stiker = this.hfd.GetStreamFromUrl(stikerUrl);
-                var stikerTitle = "Hfd מדקבה.pdf";
-                ServerResponse<FileStoreResult> priortyFile = await this.StoreFileInServer(stiker, stikerTitle);
+                //var stiker = this.hfd.GetStreamFromUrl(stikerUrl);
+                //var stikerTitle = "Hfd מדקבה.pdf";
+                //ServerResponse<FileStoreResult> priortyFile = await this.StoreFileInServer(stiker, stikerTitle);
 
-                var attacmentList = new List<dynamic>();
-                attacmentList.Add(new { 
-                        EXTFILENAME = priortyFile.Singel.location.Replace("C:\\priority", "..\\.."), 
-                        EXTFILEDES = stikerTitle 
-                });
+                //var attacmentList = new List<dynamic>();
+                //attacmentList.Add(new { 
+                //        EXTFILENAME = priortyFile.Singel.location.Replace("C:\\priority", "..\\.."), 
+                //        EXTFILEDES = stikerTitle 
+                //});
 
                 var priorityUpdateVm = new
                 {
                     QAMT_RUNREFERENCE = createShip,
-                    EXTFILES_SUBFORM = attacmentList
+                    //EXTFILES_SUBFORM = attacmentList
                 };
 
                 await this.priority.UpdateItemAsync<dynamic>("CHNGDOCUMENTS_D", $"DOCNO='{o}',TYPE='D'", priorityUpdateVm);
